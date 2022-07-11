@@ -4,7 +4,8 @@
     {
         public static void Main()
         {
-            Console.WriteLine("Hello, world!");
+            GameInterface gi = new();
+            Console.ReadLine();
         }
 
     }
@@ -30,38 +31,40 @@
 
     internal class GameInterface
     {
-        private const int middleX = 200;
-        private const int middleY = 200;
-        private const int lengthOfSide = 400;
-        private const char charOfBorders = '*';
+        private const int middleX = 35;
+        private const int middleY = 35;
+        private const int lengthOfSide = 70;
+        private const char charOfBorders = '#';
 
         public GameInterface()
         {
-            drawBorders(middleX, middleY, lengthOfSide);
+            DrawBorders(middleX, middleY, lengthOfSide);
         }
 
-        private void drawBorders(int x, int y, int lengthOfSide)
+        private static void DrawBorders(int x, int y, int lengthOfSide)
         {
-            static void DrawUp(int x, int y, int length)
+            static void DrawHorizontal(int x, int y, int length)
             {
                 for (int i = 0; i < length; i++)
                 {
-                    Point p = new Point(x - (length / 2) + i, y - (length / 2));
+                    Point p = new Point(x + i, y);
                     p.DrawChar(charOfBorders);
                 }
             }
 
-            static void DrawRight(int x, int y, int length)
+            static void DrawVertical(int x, int y, int length)
             {
                 for (int i = 0; i < length; i++)
                 {
-                    Point p = new Point(x + (length / 2), y - (length / 2) + i);
+                    Point p = new Point(x, y + i);
                     p.DrawChar(charOfBorders);
                 }
             }
 
-            DrawUp(x, y, lengthOfSide);
-            DrawRight(x, y, lengthOfSide);
+            DrawHorizontal(x - (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
+            DrawVertical(x + (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
+            DrawHorizontal(x - (lengthOfSide / 2), y + (lengthOfSide / 2), lengthOfSide);
+            DrawVertical(x - (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
 
         }
 
