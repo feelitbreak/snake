@@ -64,9 +64,6 @@
             DrawVertical(x, 0, y);
             DrawHorizontal(0, y, x);
             DrawVertical(0, 0, y);
-
         }
-
-
     }
 }
