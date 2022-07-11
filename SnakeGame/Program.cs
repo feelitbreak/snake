@@ -31,21 +31,20 @@
 
     internal static class GameInterface
     {
-        private const int middleX = 35;
-        private const int middleY = 35;
-        private const int lengthOfSide = 70;
-        private const char charOfBorders = '#';
+        private const int cornerX = 85;
+        private const int cornerY = 25;
+        private const char charOfBorders = '*';
 
         public static void Draw()
         {
-            DrawBorders(middleX, middleY, lengthOfSide);
+            DrawBorders(cornerX, cornerY);
         }
 
-        private static void DrawBorders(int x, int y, int lengthOfSide)
+        private static void DrawBorders(int x, int y)
         {
             static void DrawHorizontal(int x, int y, int length)
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i <= length; i++)
                 {
                     Point p = new Point(x + i, y);
                     p.DrawChar(charOfBorders);
@@ -54,17 +53,17 @@
 
             static void DrawVertical(int x, int y, int length)
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i <= length; i++)
                 {
                     Point p = new Point(x, y + i);
                     p.DrawChar(charOfBorders);
                 }
             }
 
-            DrawHorizontal(x - (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
-            DrawVertical(x + (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
-            DrawHorizontal(x - (lengthOfSide / 2), y + (lengthOfSide / 2), lengthOfSide);
-            DrawVertical(x - (lengthOfSide / 2), y - (lengthOfSide / 2), lengthOfSide);
+            DrawHorizontal(0, 0, x);
+            DrawVertical(x, 0, y);
+            DrawHorizontal(0, y, x);
+            DrawVertical(0, 0, y);
 
         }
 
