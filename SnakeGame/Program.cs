@@ -7,37 +7,36 @@
             GameInterface.Draw();
             Console.ReadLine();
         }
-
     }
 
     internal struct Point
     {
         public int X { get; set; }
+
         public int Y { get; set; }
 
-        public Point (int x, int y)
+        public Point(int x, int y)
         {
-            X = x;
-            Y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         public void DrawChar(char c)
         {
-            Console.SetCursorPosition(X, Y);
+            Console.SetCursorPosition(this.X, this.Y);
             Console.Write(c);
         }
-
     }
 
     internal static class GameInterface
     {
-        private const int cornerX = 85;
-        private const int cornerY = 25;
-        private const char charOfBorders = '*';
+        private const int CornerX = 85;
+        private const int CornerY = 25;
+        private const char CharOfBorders = '*';
 
         public static void Draw()
         {
-            DrawBorders(cornerX, cornerY);
+            DrawBorders(CornerX, CornerY);
         }
 
         private static void DrawBorders(int x, int y)
@@ -46,8 +45,8 @@
             {
                 for (int i = 0; i <= length; i++)
                 {
-                    Point p = new Point(x + i, y);
-                    p.DrawChar(charOfBorders);
+                    Point p = new(x + i, y);
+                    p.DrawChar(CharOfBorders);
                 }
             }
 
@@ -55,8 +54,8 @@
             {
                 for (int i = 0; i <= length; i++)
                 {
-                    Point p = new Point(x, y + i);
-                    p.DrawChar(charOfBorders);
+                    Point p = new(x, y + i);
+                    p.DrawChar(CharOfBorders);
                 }
             }
 
