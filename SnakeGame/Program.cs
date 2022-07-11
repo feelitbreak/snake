@@ -4,7 +4,7 @@
     {
         public static void Main()
         {
-            GameInterface gi = new();
+            GameInterface.Draw();
             Console.ReadLine();
         }
 
@@ -29,14 +29,14 @@
 
     }
 
-    internal class GameInterface
+    internal static class GameInterface
     {
         private const int middleX = 35;
         private const int middleY = 35;
         private const int lengthOfSide = 70;
         private const char charOfBorders = '#';
 
-        public GameInterface()
+        public static void Draw()
         {
             DrawBorders(middleX, middleY, lengthOfSide);
         }
