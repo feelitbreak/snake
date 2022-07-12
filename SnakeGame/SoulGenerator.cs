@@ -5,7 +5,7 @@
     /// </summary>
     internal class SoulGenerator
     {
-        private const char SoulChar = '\u0009';
+        private const char SoulChar = 'o';
         private readonly Random r;
 
         /// <summary>

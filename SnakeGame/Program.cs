@@ -11,6 +11,10 @@
         public static void Main()
         {
             GameInterface.Draw();
+
+            SoulGenerator soulGenerator = new SoulGenerator();
+            soulGenerator.Generate();
+
             Console.ReadLine();
         }
     }
