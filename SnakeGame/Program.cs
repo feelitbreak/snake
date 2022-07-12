@@ -10,7 +10,7 @@
         /// </summary>
         public static void Main()
         {
-            Borders.Draw();
+            GameInterface.Draw();
             Console.ReadLine();
         }
     }

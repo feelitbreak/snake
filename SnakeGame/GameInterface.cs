@@ -1,9 +1,9 @@
 ﻿namespace SnakeGame
 {
     /// <summary>
-    /// Class for drawing the borders of the game.
+    /// Class for drawing the interface of the game.
     /// </summary>
-    internal static class Borders
+    internal static class GameInterface
     {
         private const int CornerX = 85;
         private const int CornerY = 25;
