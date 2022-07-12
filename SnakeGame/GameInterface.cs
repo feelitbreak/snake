@@ -5,8 +5,16 @@
     /// </summary>
     internal static class GameInterface
     {
-        private const int CornerX = 85;
-        private const int CornerY = 25;
+        /// <summary>
+        /// The x coordinate of the low right corner of the interface.
+        /// </summary>
+        public const int CornerX = 85;
+
+        /// <summary>
+        /// The y coordinate of the low right corner of the interface.
+        /// </summary>
+        public const int CornerY = 25;
+
         private const char CharOfBorders = '*';
 
         /// <summary>
