@@ -36,6 +36,7 @@
         private readonly Queue<Point> body;
         private readonly SoulGenerator soulGen;
         private Direction direction;
+        private bool canTurn = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragon"/> class.
@@ -127,6 +128,8 @@
                         break;
                     }
             }
+
+            this.canTurn = true;
         }
 
         /// <summary>
@@ -135,51 +138,56 @@
         /// <param name="key">A <see cref="ConsoleKey"/> corresponding to the direction.</param>
         public void Turn(ConsoleKey key)
         {
-            switch (key)
+            if (this.canTurn)
             {
-                case ConsoleKey.D:
-                case ConsoleKey.RightArrow:
-                    {
-                        if (this.direction == Direction.Up || this.direction == Direction.Down)
+                switch (key)
+                {
+                    case ConsoleKey.D:
+                    case ConsoleKey.RightArrow:
                         {
-                            this.direction = Direction.Right;
+                            if (this.direction == Direction.Up || this.direction == Direction.Down)
+                            {
+                                this.direction = Direction.Right;
+                            }
+
+                            break;
                         }
 
-                        break;
-                    }
-
-                case ConsoleKey.A:
-                case ConsoleKey.LeftArrow:
-                    {
-                        if (this.direction == Direction.Up || this.direction == Direction.Down)
+                    case ConsoleKey.A:
+                    case ConsoleKey.LeftArrow:
                         {
-                            this.direction = Direction.Left;
+                            if (this.direction == Direction.Up || this.direction == Direction.Down)
+                            {
+                                this.direction = Direction.Left;
+                            }
+
+                            break;
                         }
 
-                        break;
-                    }
-
-                case ConsoleKey.W:
-                case ConsoleKey.UpArrow:
-                    {
-                        if (this.direction == Direction.Right || this.direction == Direction.Left)
+                    case ConsoleKey.W:
+                    case ConsoleKey.UpArrow:
                         {
-                            this.direction = Direction.Up;
+                            if (this.direction == Direction.Right || this.direction == Direction.Left)
+                            {
+                                this.direction = Direction.Up;
+                            }
+
+                            break;
                         }
 
-                        break;
-                    }
-
-                case ConsoleKey.S:
-                case ConsoleKey.DownArrow:
-                    {
-                        if (this.direction == Direction.Right || this.direction == Direction.Left)
+                    case ConsoleKey.S:
+                    case ConsoleKey.DownArrow:
                         {
-                            this.direction = Direction.Down;
-                        }
+                            if (this.direction == Direction.Right || this.direction == Direction.Left)
+                            {
+                                this.direction = Direction.Down;
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
+                }
+
+                this.canTurn = false;
             }
         }
 
