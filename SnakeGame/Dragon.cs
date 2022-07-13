@@ -7,37 +7,28 @@
     {
         private const char HeadChar = '\u00A4';
         private const char BodyChar = '\u0030';
-        private readonly List<Point> body;
+        private readonly Queue<Point> body;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragon"/> class.
         /// </summary>
         public Dragon()
         {
-            this.body = new List<Point>();
+            this.body = new Queue<Point>();
 
             const int initialHeadX = 5;
             const int initialHeadY = 5;
 
             Point head = new Point(initialHeadX, initialHeadY);
+            head.DrawChar(HeadChar);
             Point middle = new Point(initialHeadX, initialHeadY - 1);
+            middle.DrawChar(BodyChar);
             Point tail = new Point(initialHeadX, initialHeadY - 2);
+            tail.DrawChar(BodyChar);
 
-            this.body.Add(head);
-            this.body.Add(middle);
-            this.body.Add(tail);
-        }
-
-        /// <summary>
-        /// Draws the dragon according to the points in the <see cref="body"/> list.
-        /// </summary>
-        public void Draw()
-        {
-            this.body[0].DrawChar(HeadChar);
-            for (int i = 1; i < this.body.Count; i++)
-            {
-                this.body[i].DrawChar(BodyChar);
-            }
+            this.body.Enqueue(head);
+            this.body.Enqueue(middle);
+            this.body.Enqueue(tail);
         }
     }
 }
