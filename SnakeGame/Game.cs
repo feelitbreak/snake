@@ -35,7 +35,14 @@
 
         private void Play(object? obj)
         {
-            this.dragon.Move();
+            if (this.dragon.HitBorder() || this.dragon.HitDragon())
+            {
+                this.time!.Change(0, Timeout.Infinite);
+            }
+            else
+            {
+                this.dragon.Move();
+            }
         }
     }
 }
