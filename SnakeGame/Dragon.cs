@@ -35,9 +35,9 @@
             Point tail = new Point(initialHeadX, initialHeadY - 2);
             tail.DrawChar(BodyChar);
 
-            this.body.Enqueue(head);
-            this.body.Enqueue(middle);
             this.body.Enqueue(tail);
+            this.body.Enqueue(middle);
+            this.body.Enqueue(head);
 
             this.Direction = Direction.Down;
         }
@@ -52,10 +52,12 @@
                         p.DrawChar(' ');
 
                         Point head = this.GetHead();
-                        head.DrawChar(' ');
+                        head.DrawChar(BodyChar);
 
                         head = new Point(head.X, head.Y + 1);
+                        head.DrawChar(HeadChar);
                         this.body.Enqueue(head);
+
                         break;
                     }
             }
