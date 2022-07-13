@@ -2,8 +2,8 @@
 {
     internal class Dragon
     {
-        private const char HeadChar = '\u0164';
-        private const char BodyChar = '\u0035';
+        private const char HeadChar = '\u00A4';
+        private const char BodyChar = '\u0030';
         private readonly List<Point> body;
 
         public Dragon()
@@ -11,7 +11,7 @@
             this.body = new List<Point>();
 
             const int initialHeadX = 5;
-            const int initialHeadY = 7;
+            const int initialHeadY = 5;
 
             Point head = new Point(initialHeadX, initialHeadY);
             Point middle = new Point(initialHeadX, initialHeadY - 1);
