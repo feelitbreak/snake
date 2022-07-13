@@ -126,7 +126,7 @@
         }
 
         /// <summary>
-        /// Checks if a border has been hit.
+        /// Checks if the dragon hit a border.
         /// </summary>
         /// <returns>True, if a border has been hit. False otherwise.</returns>
         public bool HitBorder() =>
@@ -134,6 +134,26 @@
             || this.GetHead().Y == 0
             || this.GetHead().X == GameInterface.CornerX
             || this.GetHead().Y == GameInterface.CornerY;
+
+        /// <summary>
+        /// Checks if the dragon hit itself.
+        /// </summary>
+        /// <returns>True, if the dragon has been hit. False otherwise.</returns>
+        public bool HitDragon()
+        {
+            Point head = this.GetHead();
+            const int skipCount = 1;
+
+            foreach (Point p in this.body.SkipLast<Point>(skipCount))
+            {
+                if (p == head)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         private Point GetHead()
         {
