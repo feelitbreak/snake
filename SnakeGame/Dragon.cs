@@ -46,10 +46,48 @@
         {
             switch (this.Direction)
             {
+                case Direction.Right:
+                    {
+                        this.ShedTail();
+
+                        Point head = this.GetHead();
+                        head.DrawChar(BodyChar);
+
+                        head = new Point(head.X + 1, head.Y);
+                        head.DrawChar(HeadChar);
+                        this.body.Enqueue(head);
+
+                        break;
+                    }
+                case Direction.Left:
+                    {
+                        this.ShedTail();
+
+                        Point head = this.GetHead();
+                        head.DrawChar(BodyChar);
+
+                        head = new Point(head.X - 1, head.Y);
+                        head.DrawChar(HeadChar);
+                        this.body.Enqueue(head);
+
+                        break;
+                    }
+                case Direction.Up:
+                    {
+                        this.ShedTail();
+
+                        Point head = this.GetHead();
+                        head.DrawChar(BodyChar);
+
+                        head = new Point(head.X, head.Y - 1);
+                        head.DrawChar(HeadChar);
+                        this.body.Enqueue(head);
+
+                        break;
+                    }
                 case Direction.Down:
                     {
-                        Point p = this.body.Dequeue();
-                        p.DrawChar(' ');
+                        this.ShedTail();
 
                         Point head = this.GetHead();
                         head.DrawChar(BodyChar);
@@ -66,6 +104,12 @@
         private Point GetHead()
         {
             return this.body.Last<Point>();
+        }
+
+        private void ShedTail()
+        {
+            Point p = this.body.Dequeue();
+            p.DrawChar(' ');
         }
     }
 }
