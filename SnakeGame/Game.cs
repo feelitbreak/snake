@@ -32,6 +32,15 @@
             const int timeBeforeStart = 500;
             const int initTimePeriod = 200;
             this.time = new Timer(this.Play, null, timeBeforeStart, initTimePeriod);
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKey key = Console.ReadKey(true).Key;
+                    this.dragon.Turn(key);
+                }
+            }
         }
 
         private void Play(object? obj)

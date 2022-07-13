@@ -34,7 +34,7 @@
         private const char HeadChar = '\u00A4';
         private const char BodyChar = '\u0030';
         private readonly Queue<Point> body;
-        private readonly Direction direction;
+        private Direction direction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragon"/> class.
@@ -119,6 +119,60 @@
                         head = new Point(head.X, head.Y + 1);
                         head.DrawChar(HeadChar);
                         this.body.Enqueue(head);
+
+                        break;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Turns the <see cref="Dragon"/> in the specified direction, if it can.
+        /// </summary>
+        /// <param name="key">A <see cref="ConsoleKey"/> corresponding to the direction.</param>
+        public void Turn(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.D:
+                case ConsoleKey.RightArrow:
+                    {
+                        if (this.direction == Direction.Up || this.direction == Direction.Down)
+                        {
+                            this.direction = Direction.Right;
+                        }
+
+                        break;
+                    }
+
+                case ConsoleKey.A:
+                case ConsoleKey.LeftArrow:
+                    {
+                        if (this.direction == Direction.Up || this.direction == Direction.Down)
+                        {
+                            this.direction = Direction.Left;
+                        }
+
+                        break;
+                    }
+
+                case ConsoleKey.W:
+                case ConsoleKey.UpArrow:
+                    {
+                        if (this.direction == Direction.Right || this.direction == Direction.Left)
+                        {
+                            this.direction = Direction.Up;
+                        }
+
+                        break;
+                    }
+
+                case ConsoleKey.S:
+                case ConsoleKey.DownArrow:
+                    {
+                        if (this.direction == Direction.Right || this.direction == Direction.Left)
+                        {
+                            this.direction = Direction.Down;
+                        }
 
                         break;
                     }
