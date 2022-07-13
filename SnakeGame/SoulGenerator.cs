@@ -26,8 +26,9 @@
         /// </summary>
         public void Generate()
         {
-            int x = this.r.Next(GameInterface.CornerX - 1) + 1;
-            int y = this.r.Next(GameInterface.CornerY - 1) + 1;
+            const int stepFromZero = 2;
+            int x = this.r.Next(GameInterface.CornerX - stepFromZero - 1) + stepFromZero;
+            int y = this.r.Next(GameInterface.CornerY - stepFromZero - 1) + stepFromZero;
 
             this.Soul = new Point(x, y);
             this.Soul.DrawChar(SoulChar);

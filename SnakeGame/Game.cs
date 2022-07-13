@@ -21,7 +21,7 @@
             this.soulGen = new SoulGenerator();
             this.soulGen.Generate();
 
-            this.dragon = new Dragon();
+            this.dragon = new Dragon(this.soulGen);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@
         public void Start()
         {
             const int timeBeforeStart = 500;
-            const int timePeriod = 150;
+            const int timePeriod = 100;
             this.time = new Timer(this.Play, null, timeBeforeStart, timePeriod);
 
             while (true)

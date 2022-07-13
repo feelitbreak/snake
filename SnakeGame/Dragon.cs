@@ -34,12 +34,14 @@
         private const char HeadChar = '\u00A4';
         private const char BodyChar = '\u0030';
         private readonly Queue<Point> body;
+        private readonly SoulGenerator soulGen;
         private Direction direction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragon"/> class.
         /// </summary>
-        public Dragon()
+        /// <param name="soulGen">The reference to the <see cref="SoulGenerator"/> of the <see cref="Game"/>.</param>
+        public Dragon(in SoulGenerator soulGen)
         {
             this.body = new Queue<Point>();
 
@@ -58,6 +60,8 @@
             this.body.Enqueue(head);
 
             this.direction = Direction.Down;
+
+            this.soulGen = soulGen;
         }
 
         /// <summary>
@@ -243,7 +247,10 @@
         private void ShedTail()
         {
             Point p = this.body.Dequeue();
-            p.DrawChar(' ');
+            if (!p.CompareCoordinates(this.soulGen.Soul!))
+            {
+                p.DrawChar(' ');
+            }
         }
     }
 }
