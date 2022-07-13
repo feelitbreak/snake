@@ -17,6 +17,11 @@
         }
 
         /// <summary>
+        /// Gets the generated soul.
+        /// </summary>
+        public Point? Soul { get; private set; }
+
+        /// <summary>
         /// Generates a soul.
         /// </summary>
         public void Generate()
@@ -24,8 +29,8 @@
             int x = this.r.Next(GameInterface.CornerX - 1) + 1;
             int y = this.r.Next(GameInterface.CornerY - 1) + 1;
 
-            Point p = new Point(x, y);
-            p.DrawChar(SoulChar);
+            this.Soul = new Point(x, y);
+            this.Soul.DrawChar(SoulChar);
         }
     }
 }

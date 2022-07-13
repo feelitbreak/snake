@@ -8,6 +8,7 @@
     internal class Game
     {
         private readonly Dragon dragon;
+        private readonly SoulGenerator soulGen;
         private Timer? time;
 
         /// <summary>
@@ -17,8 +18,8 @@
         {
             GameInterface.Draw();
 
-            SoulGenerator soulGenerator = new SoulGenerator();
-            soulGenerator.Generate();
+            this.soulGen = new SoulGenerator();
+            this.soulGen.Generate();
 
             this.dragon = new Dragon();
         }
@@ -38,6 +39,10 @@
             if (this.dragon.HitBorder() || this.dragon.HitDragon())
             {
                 this.time!.Change(0, Timeout.Infinite);
+            }
+            else if (this.dragon.EatSoul(this.soulGen.Soul!))
+            {
+                this.soulGen.Generate();
             }
             else
             {

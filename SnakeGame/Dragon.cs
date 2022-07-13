@@ -152,6 +152,23 @@
             return false;
         }
 
+        /// <summary>
+        /// Checks if the dragon can eat a soul. If so, the dragon grows another tail.
+        /// </summary>
+        /// <returns>True, if the dragon can eat a soul. False otherwise.</returns>
+        /// <param name="soul">A <see cref="Point"/> corresponding to the soul.</param>
+        public bool EatSoul(Point soul)
+        {
+            if (this.GetHead().CompareCoordinates(soul))
+            {
+                Point tail = new Point(this.body.Peek().X, this.body.Peek().Y);
+                this.body.Enqueue(tail);
+                return true;
+            }
+
+            return false;
+        }
+
         private Point GetHead()
         {
             return this.body.Last();
@@ -160,7 +177,10 @@
         private void ShedTail()
         {
             Point p = this.body.Dequeue();
-            p.DrawChar(' ');
+            if (!this.body.Peek().CompareCoordinates(p))
+            {
+                p.DrawChar(' ');
+            }
         }
     }
 }
