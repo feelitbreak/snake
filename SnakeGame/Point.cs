@@ -5,9 +5,6 @@
     /// </summary>
     internal class Point
     {
-        private readonly int x;
-        private readonly int y;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Point"/> class.
         /// </summary>
@@ -15,9 +12,19 @@
         /// <param name="y">Coordinate y.</param>
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
+
+        /// <summary>
+        /// Gets coordinate x of the <see cref="Point"/>.
+        /// </summary>
+        public int X { get; }
+
+        /// <summary>
+        /// Gets coordinate y of the <see cref="Point"/>.
+        /// </summary>
+        public int Y { get; }
 
         /// <summary>
         /// Draws a specified char int the (x,y) position.
@@ -25,7 +32,7 @@
         /// <param name="c">The char to draw.</param>
         public void DrawChar(char c)
         {
-            Console.SetCursorPosition(this.x, this.y);
+            Console.SetCursorPosition(this.X, this.Y);
             Console.Write(c);
         }
     }
