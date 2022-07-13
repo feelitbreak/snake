@@ -10,15 +10,8 @@
         /// </summary>
         public static void Main()
         {
-            GameInterface.Draw();
-
-            SoulGenerator soulGenerator = new SoulGenerator();
-            soulGenerator.Generate();
-
-            Dragon dragon = new Dragon();
-            dragon.Draw();
-
-            Console.ReadLine();
+            Game game = new Game();
+            game.Start();
         }
     }
 }
