@@ -39,7 +39,7 @@
             this.body.Enqueue(middle);
             this.body.Enqueue(tail);
 
-            Direction = Direction.Down;
+            this.Direction = Direction.Down;
         }
 
         public void Move()

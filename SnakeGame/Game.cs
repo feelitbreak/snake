@@ -4,24 +4,28 @@
 
     internal class Game
     {
-        public void Start()
+        private Timer? time;
+        private Dragon dragon;
+
+        public Game()
         {
             GameInterface.Draw();
 
             SoulGenerator soulGenerator = new SoulGenerator();
             soulGenerator.Generate();
 
-            Dragon dragon = new Dragon();
-
-            int timePeriod = 200;
-            Timer time = new Timer(Play, null, 0, timePeriod);
-
-            Console.ReadLine();
+            dragon = new Dragon();
         }
 
-        private static void Play(object obj)
+        public void Start()
         {
+            int timePeriod = 200;
+            time = new Timer(this.Play, null, 1000, timePeriod);
+        }
 
+        private void Play(object? obj)
+        {
+            this.dragon.Move();
         }
     }
 }

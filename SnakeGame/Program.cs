@@ -12,6 +12,7 @@
         {
             Game game = new Game();
             game.Start();
+            Console.Read();
         }
     }
 }
