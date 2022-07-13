@@ -30,8 +30,8 @@
         public void Start()
         {
             const int timeBeforeStart = 500;
-            const int initTimePeriod = 200;
-            this.time = new Timer(this.Play, null, timeBeforeStart, initTimePeriod);
+            const int timePeriod = 150;
+            this.time = new Timer(this.Play, null, timeBeforeStart, timePeriod);
 
             while (true)
             {

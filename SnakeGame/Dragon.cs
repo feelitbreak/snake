@@ -222,8 +222,11 @@
                     Direction.Left => new Point(head.X - 1, head.Y),
                     Direction.Up => new Point(head.X, head.Y - 1),
                     Direction.Down => new Point(head.X, head.Y + 1),
-                    _ => throw new ArgumentException("Direction had an unexpected value.", nameof(this.direction))
+                    _ => throw new FormatException("Direction had an unexpected value.")
                 };
+
+                head.DrawChar(BodyChar);
+                newHead.DrawChar(HeadChar);
 
                 this.body.Enqueue(newHead);
                 return true;
