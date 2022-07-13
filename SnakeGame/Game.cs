@@ -28,8 +28,9 @@
         /// </summary>
         public void Start()
         {
-            int timePeriod = 200;
-            this.time = new Timer(this.Play, null, 1000, timePeriod);
+            const int timeBeforeStart = 500;
+            const int initTimePeriod = 200;
+            this.time = new Timer(this.Play, null, timeBeforeStart, initTimePeriod);
         }
 
         private void Play(object? obj)
