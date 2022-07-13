@@ -30,7 +30,7 @@
         public void Start()
         {
             const int timeBeforeStart = 500;
-            const int timePeriod = 100;
+            const int timePeriod = 120;
             this.time = new Timer(this.Play, null, timeBeforeStart, timePeriod);
 
             while (true)
