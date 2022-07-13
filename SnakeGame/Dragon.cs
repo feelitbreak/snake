@@ -215,8 +215,17 @@
         {
             if (this.GetHead().CompareCoordinates(soul))
             {
-                Point tail = new Point(this.body.Peek().X, this.body.Peek().Y);
-                this.body.Enqueue(tail);
+                Point head = this.GetHead();
+                Point newHead = this.direction switch
+                {
+                    Direction.Right => new Point(head.X + 1, head.Y),
+                    Direction.Left => new Point(head.X - 1, head.Y),
+                    Direction.Up => new Point(head.X, head.Y - 1),
+                    Direction.Down => new Point(head.X, head.Y + 1),
+                    _ => throw new ArgumentException("Direction had an unexpected value.", nameof(this.direction))
+                };
+
+                this.body.Enqueue(newHead);
                 return true;
             }
 
@@ -231,10 +240,7 @@
         private void ShedTail()
         {
             Point p = this.body.Dequeue();
-            if (!this.body.Peek().CompareCoordinates(p))
-            {
-                p.DrawChar(' ');
-            }
+            p.DrawChar(' ');
         }
     }
 }
