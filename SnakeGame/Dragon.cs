@@ -1,10 +1,28 @@
 ﻿namespace SnakeGame
 {
+    /// <summary>
+    /// Enum class for directions.
+    /// </summary>
     public enum Direction
     {
+        /// <summary>
+        /// Represents the right direction.
+        /// </summary>
         Right,
+
+        /// <summary>
+        /// Represents the left direction.
+        /// </summary>
         Left,
+
+        /// <summary>
+        /// Represents the upward direction.
+        /// </summary>
         Up,
+
+        /// <summary>
+        /// Represents the downward direction.
+        /// </summary>
         Down,
     }
 
@@ -16,7 +34,7 @@
         private const char HeadChar = '\u00A4';
         private const char BodyChar = '\u0030';
         private readonly Queue<Point> body;
-        private Direction Direction;
+        private readonly Direction direction;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dragon"/> class.
@@ -39,12 +57,15 @@
             this.body.Enqueue(middle);
             this.body.Enqueue(head);
 
-            this.Direction = Direction.Down;
+            this.direction = Direction.Down;
         }
 
+        /// <summary>
+        /// Moves the <see cref="Dragon"/> in the direction specified in the <see cref="direction"/> field.
+        /// </summary>
         public void Move()
         {
-            switch (this.Direction)
+            switch (this.direction)
             {
                 case Direction.Right:
                     {
@@ -59,6 +80,7 @@
 
                         break;
                     }
+
                 case Direction.Left:
                     {
                         this.ShedTail();
@@ -72,6 +94,7 @@
 
                         break;
                     }
+
                 case Direction.Up:
                     {
                         this.ShedTail();
@@ -85,6 +108,7 @@
 
                         break;
                     }
+
                 case Direction.Down:
                     {
                         this.ShedTail();
@@ -100,6 +124,16 @@
                     }
             }
         }
+
+        /// <summary>
+        /// Checks if a border has been hit.
+        /// </summary>
+        /// <returns>True, if a border has been hit. False otherwise.</returns>
+        public bool HitBorder() =>
+            this.GetHead().X == 0
+            || this.GetHead().Y == 0
+            || this.GetHead().X == GameInterface.CornerX
+            || this.GetHead().Y == GameInterface.CornerY;
 
         private Point GetHead()
         {
