@@ -144,12 +144,9 @@
             Point head = this.GetHead();
             const int skipCount = 1;
 
-            foreach (Point p in this.body.SkipLast<Point>(skipCount))
+            if (this.body.SkipLast(skipCount).Any(p => head.CompareCoordinates(p)))
             {
-                if (p == head)
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;
@@ -157,7 +154,7 @@
 
         private Point GetHead()
         {
-            return this.body.Last<Point>();
+            return this.body.Last();
         }
 
         private void ShedTail()

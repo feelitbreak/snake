@@ -35,5 +35,12 @@
             Console.SetCursorPosition(this.X, this.Y);
             Console.Write(c);
         }
+
+        /// <summary>
+        /// Checks if the <see cref="Point"/> has the same coordiates as the given point.
+        /// </summary>
+        /// <param name="p">Point to compare to.</param>
+        /// <returns>True, if the points have the same coordinates. False otherwise.</returns>
+        public bool CompareCoordinates(Point p) => this.X == p.X && this.Y == p.Y;
     }
 }
