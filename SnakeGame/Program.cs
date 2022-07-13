@@ -15,6 +15,9 @@
             SoulGenerator soulGenerator = new SoulGenerator();
             soulGenerator.Generate();
 
+            Dragon dragon = new Dragon();
+            dragon.Draw();
+
             Console.ReadLine();
         }
     }
