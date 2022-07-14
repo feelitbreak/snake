@@ -70,7 +70,6 @@
         {
             if (this.dragon.HitBorder() || this.dragon.HitDragon())
             {
-                this.time!.Change(0, Timeout.Infinite);
                 this.Lost = true;
             }
             else if (this.dragon.EatSoul(this.soulGen.Soul!))
