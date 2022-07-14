@@ -7,9 +7,14 @@
     /// </summary>
     internal class Game
     {
+        private const int SoulsToChangeTime = 5;
+        private const double TimePeriodChange = 1.2;
         private readonly Dragon dragon;
         private readonly SoulGenerator soulGen;
         private Timer? time;
+        private int soulsEaten = 0;
+        private int timePeriod = 120;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Game"/> class.
@@ -30,15 +35,23 @@
         public void Start()
         {
             const int timeBeforeStart = 500;
-            const int timePeriod = 120;
-            this.time = new Timer(this.Play, null, timeBeforeStart, timePeriod);
+            this.time = new Timer(this.Play, null, timeBeforeStart, this.timePeriod);
 
-            while (true)
+            bool quit = false;
+
+            while (!quit)
             {
                 if (Console.KeyAvailable)
                 {
                     ConsoleKey key = Console.ReadKey(true).Key;
-                    this.dragon.Turn(key);
+                    if (key == ConsoleKey.Escape)
+                    {
+                        quit = true;
+                    }
+                    else
+                    {
+                        this.dragon.Turn(key);
+                    }
                 }
             }
         }
@@ -52,6 +65,12 @@
             else if (this.dragon.EatSoul(this.soulGen.Soul!))
             {
                 this.soulGen.Generate();
+                this.soulsEaten++;
+                if (this.soulsEaten % SoulsToChangeTime == 0)
+                {
+                    this.timePeriod = (int)(this.timePeriod / TimePeriodChange);
+                    this.time!.Change(0, this.timePeriod);
+                }
             }
             else
             {
