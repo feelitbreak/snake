@@ -249,7 +249,14 @@
 
         private Point GetHead()
         {
-            return this.body.Last();
+            try
+            {
+                return this.body.Last();
+            }
+            catch
+            {
+                return new Point(0, 0);
+            }
         }
 
         private void ShedTail()
