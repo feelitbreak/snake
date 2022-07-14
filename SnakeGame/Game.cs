@@ -73,6 +73,8 @@
             }
             else if (this.dragon.EatSoul(this.soulGen.Soul!))
             {
+                GameInterface.ChangeScore(this.soulsEaten * 10);
+
                 this.soulGen.Generate();
                 this.soulsEaten++;
                 if (this.soulsEaten % SoulsToChangeTime == 0 && this.timePeriod > MinTimePeriod)
