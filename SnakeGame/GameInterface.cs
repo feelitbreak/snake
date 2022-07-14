@@ -74,7 +74,7 @@
             const int TutorialY = CornerY / 5;
 
             Console.SetCursorPosition(TutorialX, TutorialY);
-            Console.WriteLine("Use W, A, S, D");
+            Console.WriteLine("Use W, A, S, D,");
             Console.SetCursorPosition(TutorialX, TutorialY + 1);
             Console.WriteLine("or arrows to move.");
             Console.SetCursorPosition(TutorialX, TutorialY + 3);
