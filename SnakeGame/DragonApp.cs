@@ -3,14 +3,14 @@
     /// <summary>
     /// Class for the app that starts the  <see cref="Game"/>.
     /// </summary>
-    internal class DragonApp
+    internal static class DragonApp
     {
         private const int TimeBetweenGames = 1000;
 
         /// <summary>
         /// Runs the  <see cref="DragonApp"/>.
         /// </summary>
-        public void Run()
+        public static void Run()
         {
             Console.CursorVisible = false;
 

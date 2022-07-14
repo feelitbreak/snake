@@ -10,8 +10,7 @@
         /// </summary>
         public static void Main()
         {
-            DragonApp dragonApp = new DragonApp();
-            dragonApp.Run();
+            DragonApp.Run();
         }
     }
 }
