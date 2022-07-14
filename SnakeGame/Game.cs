@@ -15,7 +15,6 @@
         private int soulsEaten = 0;
         private int timePeriod = 120;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Game"/> class.
         /// </summary>
