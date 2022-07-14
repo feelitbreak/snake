@@ -5,14 +5,32 @@
     /// </summary>
     internal class DragonApp
     {
+        private const int TimeBetweenGames = 1000;
+
         /// <summary>
         /// Runs the  <see cref="DragonApp"/>.
         /// </summary>
         public void Run()
         {
             Console.CursorVisible = false;
-            Game game = new Game();
-            game.Start();
+
+            bool close = false;
+            while (!close)
+            {
+                Console.CursorVisible = false;
+                Game game = new Game();
+                game.Start();
+                close = game.Quit;
+                if (game.Lost)
+                {
+                    Console.SetCursorPosition(GameInterface.CornerX / 3, GameInterface.CornerY / 2);
+                    Console.WriteLine("You lost. Restarting the game.");
+                    Thread.Sleep(TimeBetweenGames);
+                    Console.Clear();
+                }
+            }
+
+            Console.Clear();
         }
     }
 }
