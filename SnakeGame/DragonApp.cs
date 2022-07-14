@@ -25,11 +25,10 @@
                     Console.SetCursorPosition(GameInterface.CornerX / 3, GameInterface.CornerY / 2);
                     Console.WriteLine("You lost. Restarting the game.");
                     Thread.Sleep(TimeBetweenGames);
-                    Console.Clear();
                 }
-            }
 
-            Console.Clear();
+                Console.Clear();
+            }
         }
     }
 }
