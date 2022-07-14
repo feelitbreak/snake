@@ -23,6 +23,7 @@
         public static void Draw()
         {
             DrawBorders(CornerX, CornerY);
+            DrawTutorial();
         }
 
         private static void DrawBorders(int x, int y)
@@ -49,6 +50,24 @@
             DrawVertical(x, 0, y);
             DrawHorizontal(0, y, x);
             DrawVertical(0, 0, y);
+        }
+
+        private static void DrawTutorial()
+        {
+            const int TutorialX = CornerX + 4;
+            const int TutorialY = CornerY / 5;
+            Console.SetCursorPosition(TutorialX, TutorialY);
+            Console.WriteLine("Use W, A, S, D");
+            Console.SetCursorPosition(TutorialX, TutorialY + 1);
+            Console.WriteLine("or arrows to move.");
+            Console.SetCursorPosition(TutorialX, TutorialY + 3);
+            Console.WriteLine("Esc to quit.");
+            Console.SetCursorPosition(TutorialX, TutorialY + 5);
+            Console.WriteLine("Eat as many souls as you can");
+            Console.SetCursorPosition(TutorialX, TutorialY + 6);
+            Console.WriteLine("and become the mightiest");
+            Console.SetCursorPosition(TutorialX, TutorialY + 7);
+            Console.WriteLine("dragon alive!");
         }
     }
 }
