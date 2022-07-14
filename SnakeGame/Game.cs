@@ -29,6 +29,16 @@
         }
 
         /// <summary>
+        /// Gets a value indicating whether the player has quit the game.
+        /// </summary>
+        public bool Quit { get; private set; } = false;
+
+        /// <summary>
+        /// Gets a value indicating whether the player has lost the game.
+        /// </summary>
+        public bool Lost { get; private set; } = false;
+
+        /// <summary>
         /// Starts the <see cref="Game"/>.
         /// </summary>
         public void Start()
@@ -36,16 +46,14 @@
             const int timeBeforeStart = 500;
             this.time = new Timer(this.Play, null, timeBeforeStart, this.timePeriod);
 
-            bool quit = false;
-
-            while (!quit)
+            while (!this.Quit && !this.Lost)
             {
                 if (Console.KeyAvailable)
                 {
                     ConsoleKey key = Console.ReadKey(true).Key;
                     if (key == ConsoleKey.Escape)
                     {
-                        quit = true;
+                        this.Quit = true;
                     }
                     else
                     {
@@ -60,6 +68,7 @@
             if (this.dragon.HitBorder() || this.dragon.HitDragon())
             {
                 this.time!.Change(0, Timeout.Infinite);
+                this.Lost = true;
             }
             else if (this.dragon.EatSoul(this.soulGen.Soul!))
             {

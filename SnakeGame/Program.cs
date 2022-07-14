@@ -10,9 +10,8 @@
         /// </summary>
         public static void Main()
         {
-            Console.CursorVisible = false;
-            Game game = new Game();
-            game.Start();
+            DragonApp dragonApp = new DragonApp();
+            dragonApp.Run();
         }
     }
 }
