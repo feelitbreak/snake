@@ -30,6 +30,14 @@
         }
 
         /// <summary>
+        /// Finalizes an instance of the <see cref="Game"/> class.
+        /// </summary>
+        ~Game()
+        {
+            this.time?.Dispose();
+        }
+
+        /// <summary>
         /// Gets a value indicating whether the player has quit the game.
         /// </summary>
         public bool Quit { get; private set; } = false;

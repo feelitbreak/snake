@@ -66,6 +66,14 @@
         }
 
         /// <summary>
+        /// Finalizes an instance of the <see cref="Dragon"/> class.
+        /// </summary>
+        ~Dragon()
+        {
+            this.body.Clear();
+        }
+
+        /// <summary>
         /// Moves the <see cref="Dragon"/> in the direction specified in the <see cref="direction"/> field.
         /// </summary>
         public void Move()
