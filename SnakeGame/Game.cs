@@ -9,6 +9,7 @@
     {
         private const int SoulsToChangeTime = 5;
         private const double TimePeriodChange = 1.2;
+        private const int MinTimePeriod = 50;
         private readonly Dragon dragon;
         private readonly SoulGenerator soulGen;
         private Timer? time;
@@ -74,7 +75,7 @@
             {
                 this.soulGen.Generate();
                 this.soulsEaten++;
-                if (this.soulsEaten % SoulsToChangeTime == 0)
+                if (this.soulsEaten % SoulsToChangeTime == 0 && this.timePeriod > MinTimePeriod)
                 {
                     this.timePeriod = (int)(this.timePeriod / TimePeriodChange);
                     this.time!.Change(0, this.timePeriod);

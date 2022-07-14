@@ -17,7 +17,6 @@
             bool close = false;
             while (!close)
             {
-                Console.CursorVisible = false;
                 Game game = new Game();
                 game.Start();
                 close = game.Quit;
